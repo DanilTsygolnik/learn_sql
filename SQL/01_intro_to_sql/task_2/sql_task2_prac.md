@@ -6,10 +6,12 @@
 
 #### Получаем информацию об отношениях
 
-![Шаг 1](relationships_check_step1.png)
-![Шаг 2](relationships_check_step2.png)
-![Шаг 3](relationships_check_step3.png)
+<p> <img src="relationships_check_step1.png" width=300 /> <img src="relationships_check_step2.png" width=400 /> </p>
+<img src="relationships_check_step3.png" width=700 />
 
+#### Отношения таблиц
+
+---
 
 Customers связана с CustomerCustomerDemo
 - Private Key Column (Customers) -- CustomerID;
@@ -132,6 +134,8 @@ Orders связана с Customers:
 
 Пояснение: значения (ID в столбце CustomerID) в таблице Orders некоторые значения повторяются, а в таблице Customers встречаются строго по 1 разу.
 
+---
+
 #### Решение кратко
 
 Categories––Products // "один ко многим"     
@@ -199,4 +203,4 @@ Employees––Territories // "многие ко многим"
 Products––Orders // "многие ко многим"
 ```
 
-В данный момент, остает открытым вопрос: "Каким образом понять, есть ли отношение многие-ко-многим у двух таблиц, связанных с одной и той же третьей?"
+В данный момент, остает открытым вопрос: "Каким образом понять, находятся ли разные таблицы, связанные с одной и той же, в отношении многие-ко-многим?"
