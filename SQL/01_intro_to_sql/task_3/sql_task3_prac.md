@@ -2,13 +2,11 @@
 
 Работаем с учебной БД ![Northwind](../northwind.zip).
 
-### Ход работы
+---
 
-##### Задание 1
+#### Задание 1
 
 *Написать запрос, формирующий полный список товаров (Products) и выводящий название товара и количество единиц на складе.*
-
----
 
 Чтобы узнать названия полей, открыл таблицу Products (см. скриншот ниже).
 
@@ -21,7 +19,7 @@ SELECT ProductName , UnitsInStock FROM Products;
 
 Запрос не сработал, я заподозрил ошибку в синтаксисе. Обратил внимание на код, который выводится при выводе полей из контекстного меню для таблиц.
 
-<img src="syntax_analyzing1.png" width=700 />
+<img src="syntax_analyzing1.png" width=800 />
 
 Переписал код запроса в соответствии с примером:
 ```sql
@@ -40,11 +38,12 @@ SELECT [ProductName] , [UnitsInStock] FROM [northwind].[dbo].[Products];
 
 ---
 
-##### Задание 2
+#### Задание 2
 
 *Написать запрос, формирующий список товаров (Products) и выводящий название товара и цену для тех товаров, которые дешевле 20.*
 
----
+Таблица: [northwind].[dbo].[Products]
+Поля: [ProductName], [UnitPrice]
 
 Код запроса:
 ```sql
@@ -53,11 +52,11 @@ SELECT [ProductName], [UnitPrice] FROM [northwind].[dbo].[Products]
 WHERE [UnitPrice] < 20;
 ```
 
-##### Задание 3
+---
+
+#### Задание 3
 
 *Вывести список заказов, у которых плата за груз лежит в диапазоне от 11.7 до 98.1.*
-
----
 
 Таблица: [northwind].[dbo].[Orders]
 Поля: [OrderID], [Freight]
@@ -80,11 +79,11 @@ Incorrect syntax near '<'.
 SELECT * FROM [northwind].[dbo].[Orders] WHERE (11.7 <= [Freight]) AND ([Freight] <= 98.1);
 ```
 
-##### Задание 4
+---
+
+#### Задание 4
 
 *Отобрать всех сотрудников (Employees) - мужчин (анализируйте поле TitleOfCourtesy).*
-
----
 
 Таблица: [northwind].[dbo].[Employees]
 Поля: [TitleOfCourtesy]
@@ -95,28 +94,14 @@ SELECT * FROM [northwind].[dbo].[Orders] WHERE (11.7 <= [Freight]) AND ([Freight
 Код запроса:
 ```sql
 SELECT * FROM [northwind].[dbo].[Employees]
-WHERE ([TitleOfCourtesy] == 'Mr.') OR ([TitleOfCourtesy] == 'Dr.');
-```
-
-Ошибка:
-```
-Msg 102, Level 15, State 1, Line 2
-Incorrect syntax near '<'.
-```
-
-Замена знаков `==` на `=` исправила ситуацию:
-```sql
-SELECT * FROM [northwind].[dbo].[Employees]
 WHERE ([TitleOfCourtesy] = 'Mr.') OR ([TitleOfCourtesy] = 'Dr.');
 ```
 
-Эксперимент показал, что записи `<>` и `!=` работают одинаково корректно.
+---
 
-##### Задание 5
+#### Задание 5
 
 *Отобрать всех поставщиков (Suppliers) из Японии.*
-
----
 
 Таблица: [northwind].[dbo].[Suppliers]
 Поля: [Country]
@@ -126,11 +111,11 @@ WHERE ([TitleOfCourtesy] = 'Mr.') OR ([TitleOfCourtesy] = 'Dr.');
 SELECT * FROM [northwind].[dbo].[Suppliers] WHERE ([Country] = 'Japan');
 ```
 
-##### Задание 6
+---
+
+#### Задание 6
 
 *Отобрать все заказы, для которых идентификатор сотрудника-исполнителя равен 2, 4 или 8.*
-
----
 
 Таблица: [northwind].[dbo].[Orders]
 Поля: [EmployeeID]
@@ -143,11 +128,11 @@ WHERE [EmployeeID] = 2 OR
       [EmployeeID] = 8;
 ```
 
-##### Задание 7
-
-*вывести идентификаторы заказов и товаров из таблицы Order Details, для которых цена больше 40, а количество (Quantity) меньше 10.*
-
 ---
+
+#### Задание 7
+
+*Вывести идентификаторы заказов и товаров из таблицы Order Details, для которых цена больше 40, а количество (Quantity) меньше 10.*
 
 Таблица: [northwind].[dbo].[Order Details]
 Поля: [OrderID], [UnitPrice], [Quantity]
@@ -158,3 +143,5 @@ WHERE [EmployeeID] = 2 OR
 SELECT [OrderID], [UnitPrice], [Quantity] FROM [northwind].[dbo].[Order Details]
 WHERE [UnitPrice] > 40 AND [Quantity] < 10;
 ```
+
+---
