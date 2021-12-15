@@ -17,7 +17,8 @@ WHERE [ContactName] LIKE '% C%';
 ```
 
 Результат выполнения запроса на скриншоте.
-<img src="task1.png" />
+
+<img src="task1.png" width=600 />
 
 ---
 
@@ -34,7 +35,8 @@ WHERE ([Freight] BETWEEN 100 AND 200) AND ([ShipCountry] IN ('USA', 'France'));
 ```
 
 Результат выполнения запроса на скриншоте.
-<img src="task2.png" />
+
+<img src="task2.png" width=800 />
 
 ---
 
@@ -51,9 +53,11 @@ WHERE [TerritoryID] BETWEEN 6897 AND 31000;
 ```
 
 Вид таблицы до запроса:
-<img src="task3_before.png" />
+
+<img src="task3_before.png" width=400 />
 
 Отфильтрованная таблица:
-<img src="task3_after.png" />
+
+<img src="task3_after.png" width=400 />
 
 ---
