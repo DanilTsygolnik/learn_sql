@@ -8,8 +8,6 @@
 
 *Отсортировать список сотрудников Employees по дате рождения, начиная с самых молодых, и по стране.*
 
----
-
 Таблица: [northwind].[dbo].[Employees]
 Поля: [BirthDate], [Country]
 
@@ -20,15 +18,13 @@ ORDER BY [BirthDate] DESC, [Country];
 
 Результат выполнения запроса на скриншоте.
 
-<img src="task1.png" />
+<img src="task1.png" width=800 />
 
 ---
 
 ##### Задание 2
 
 *Исключить из предыдущего набора те записи, в которых поле Region равно NULL.*
-
----
 
 Таблица: [northwind].[dbo].[Employees]
 Поля: [BirthDate], [Country], [Region]
@@ -41,15 +37,13 @@ ORDER BY [BirthDate] DESC, [Country];
 
 Результат выполнения запроса на скриншоте.
 
-<img src="task2 1.png" />
+<img src="task2.png" width=800 />
 
 ---
 
 ##### Задание 3
 
 *Найти среднюю, минимальную и максимальную цены по полю UnitPrice из таблицы Order Details.*
-
----
 
 Таблица: [northwind].[dbo].[Order Details]
 Поля: [UnitPrice]
@@ -67,19 +61,17 @@ SELECT MAX([UnitPrice]) FROM [northwind].[dbo].[Order Details];
 
 Результат выполнения запроса на скриншоте.
 
-<img src="task3.png" />
+<img src="task3.png" width=400 />
 
 Для проверки обратимся к отстортированной по цене таблицей.
 
-<img src="task3_check.png" />
+<img src="task3_check.png" width=400 />
 
 ---
 
 ##### Задание 4
 
 *Подсчитать количество уникальных городов в списке пользователей (Customers).*
-
----
 
 Таблица: [northwind].[dbo].[Customers]
 Поля: [City]
@@ -90,6 +82,6 @@ SELECT COUNT (DISTINCT [City]) FROM [northwind].[dbo].[Customers];
 
 Результат выполнения запроса на скриншоте.
 
-<img src="task4.png" />
+<img src="task4.png" width=400 />
 
 ---
