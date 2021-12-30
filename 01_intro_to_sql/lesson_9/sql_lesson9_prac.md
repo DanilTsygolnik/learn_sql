@@ -9,8 +9,8 @@ SELECT t1.CompanyName, t2.CompanyName,
        t1.Region AS comp1_region,
        t2.Region AS comp2_region
   FROM Customers t1, Customers t2
- WHERE t1.Region IS NULL AND t2.Region IS NULL
-   AND t1.CompanyName <> t2.CompanyName;
+ WHERE t1.Region IS NULL AND t2.Region IS NULL AND
+       t1.CompanyName <> t2.CompanyName;
 ```
 
 ---

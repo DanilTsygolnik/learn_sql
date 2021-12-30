@@ -11,23 +11,23 @@ SELECT t1.ContactName, t2.ContactName, t2.ContactTitle
 ```
 Будут выданы все пары контактных лиц, у которых совпадает название должности.
 
-<img src="les9_exmp1.png" />
+<img src="les9_exmp1.png" width=450 />
 
 Обычно подобные запросы к копиям таблиц делаются, чтобы выявить в ней различные несогласованности, избыточность информации и т. д.
 
 Переменные корреляции особо важны, если требуется сформировать не просто список результатов, а набор комбинаций, удовлетворяющих заданному условию. Например, для определенной работы требуется сформировать все варианты из трёх сотрудников, проживающих в Лондоне (поле City). В этом поможет следующее выражение:
 ```sql
 SELECT t1.ContactName, t2.ContactName, t3.ContactName, t1.City 
-FROM Customers t1, Customers t2, Customers t3 
-WHERE (t1.City = 'London') AND (t1.City = t2.City) AND (t1.City = t3.City) 
-AND (t1.CustomerID <> t2.CustomerID) AND 
-(t1.CustomerID <> t3.CustomerID) AND 
-(t2.CustomerID <> t3.CustomerID); 
+  FROM Customers t1, Customers t2, Customers t3 
+ WHERE (t1.City = 'London') AND
+       (t1.City = t2.City) AND 
+       (t1.City = t3.City) AND
+       (t1.CustomerID <> t2.CustomerID) AND 
+       (t1.CustomerID <> t3.CustomerID) AND 
+       (t2.CustomerID <> t3.CustomerID);
 ```
 
 Примечательно, что с помощью операций группировки мы не можем получить такой результат.
-
----
 
 ## Проверка пустого запроса
 
@@ -43,8 +43,6 @@ SELECT * FROM [Order Details] t1
 
 Если вместо `EXISTS` мы запишем `NOT EXISTS`, то соответственно получим список товаров, цена которых ниже 200.
 
----
-
 ## Проверка набора на наличие значений вложенным запросом
 
 Предложение `ANY` проверяет, имеется ли в наборе, выданном подзапросом, хотя бы одно из заданных значений. Оно применяется только во вложенных запросах.
@@ -54,9 +52,8 @@ SELECT * FROM [Order Details] t1
 Для этого надо проверить, какие записи таблицы Employees совпадают по значению поля Country (страна работы) со значением поля ShipCountry (страна поставки) таблицы Orders:
 ```sql
 SELECT t1.FirstName, t1.LastName, t1.Country, t2.OrderDate 
-FROM Employees t1, Orders t2 
-WHERE t1.Country = ANY 
-(SELECT ShipCountry FROM Orders); 
+  FROM Employees t1, Orders t2 
+ WHERE t1.Country = ANY (SELECT ShipCountry FROM Orders); 
 ```
 
 Предложение `ALL` противоположно по смыслу предложению `ANY`. Оно проверяет, равно ли заданное значение не какому-то одному, а каждому из значений тестируемого набора записей. Однако работает эта команда не совсем обычно. Выражение наподобие:
@@ -68,9 +65,8 @@ Country = ALL (SELECT ShipCountry FROM Orders)
 Пусть требуется найти все заказы в странах, на которые не приходится ни один сотрудник. Соответствующий запрос можно записать так:
 ```sql
 SELECT t1.FirstName, t1.LastName, t1.Country, t2.OrderDate 
-FROM Employees t1, Orders t2 
-WHERE t1.Country <> ALL 
-(SELECT ShipCountry FROM Orders);
+  FROM Employees t1, Orders t2 
+ WHERE t1.Country <> ALL (SELECT ShipCountry FROM Orders);
 ```
 
 Выражение:
@@ -89,8 +85,6 @@ t1.Country <> ALL (SELECT ShipCountry FROM Orders)
 - Построчно работает сама `WHERE` в целом -- сперва конструируется произведение таблиц из `FROM`, потом на него накладывается ограничение` WHERE` -- исключаются записи, для которых предикат `WHERE` ложен.
 Что лучше выбрать, это скорее вопрос эффективности: надо смотреть, как в конкретной СУБД реализована та или иная фича, насколько большие получаются промежуточные запросы, и т. п.
 - Разница между `ANY` и `IN` на практике по большому счёту лишь в том, что для `ANY` можно использовать операции сравнения `=`,  `>`,  `<` 
-
----
 
 # Практика
 
