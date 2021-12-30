@@ -1,7 +1,5 @@
 # Практика
 
----
-
 ##### Задание 1
 
 *Сформировать список названий товаров (таблица Products) с указанием для каждого из них соответствующей категории (таблица Categories).*
@@ -14,7 +12,7 @@ SELECT Products.ProductName, Categories.CategoryName
 
 Результат выполнения запроса на скриншоте.
 
-<img src="sql_skillsmart_les8_task1.png" />
+<img src="sql_skillsmart_les8_task1.png" width=350 />
 
 ---
 
@@ -34,7 +32,7 @@ SELECT DISTINCT [Order Details].UnitPrice, Products.ProductName
 
 Результат выполнения запроса на скриншоте.
 
-<img src="sql_skillsmart_les8_task2.png" />
+<img src="sql_skillsmart_les8_task2.png" width=350 />
 
 ---
 
@@ -53,6 +51,6 @@ SELECT DISTINCT [Order Details].UnitPrice, Products.ProductName, Categories.Cate
 
 Результат выполнения запроса на скриншоте.
 
-<img src="sql_skillsmart_les8_task3.png" />
+<img src="sql_skillsmart_les8_task3.png" width=350 />
 
 ---

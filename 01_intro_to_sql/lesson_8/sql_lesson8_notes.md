@@ -12,7 +12,7 @@ SELECT Employees.FirstName, Employees.LastName, Orders.Freight
 
 Фрагмент огромной выборки, которую вернул запрос:
 
-<img src="sql_skillsmart_les8_exmp1.png" />
+<img src="sql_skillsmart_les8_exmp1.png" height=600 />
 
 Обычно из такого набора требуется отобрать только поля, содержащие связанные значения.
 
@@ -38,7 +38,7 @@ SELECT Employees.FirstName, Employees.LastName, Orders.Freight
 
 Результат выполнения запроса на скриншоте.
 
-<img src="sql_skillsmart_les8_exmp2.png" />
+<img src="sql_skillsmart_les8_exmp2.png" width=350 />
 
 ---
 
