@@ -7,7 +7,14 @@
 FROM Table1 JOIN Table2 ON условие
 ```
 
-Оператор `JOIN` может уточняться дополнительными модификаторами-префиксами.
+Оператор `JOIN` может уточняться дополнительными модификаторами-префиксами.     
+Например, это может быть `AS`:
+```sql
+FROM Table1 
+JOIN Table2 AS t2
+  ON условие
+```
+
 
 ## Операция INNER JOIN
 
@@ -18,14 +25,16 @@ FROM Table1 JOIN Table2 ON условие
 Простой пример -- свяжем через `JOIN` таблицу товаров (Products) и категорий товаров (Categories), чтобы показать название товара и его категорию:
 ```sql
 SELECT Products.ProductName, Categories.CategoryName
-  FROM Products INNER JOIN Categories
+  FROM Products
+ INNER JOIN Categories
     ON Products.CategoryID = Categories.CategoryID;
 ```
 
 `INNER JOIN` -- это `JOIN` в SQL по умолчанию, его можно записывать просто как `JOIN` (без `INNER`).
 ```sql
 SELECT Products.ProductName, Categories.CategoryName
-  FROM Products JOIN Categories
+  FROM Products
+  JOIN Categories
     ON Products.CategoryID = Categories.CategoryID;
 ```
 
@@ -36,7 +45,8 @@ SELECT Products.ProductName, Categories.CategoryName
 Пример:
 ```sql
 SELECT Orders.Freight, Customers.CompanyName
-  FROM Orders FULL JOIN Customers
+  FROM Orders
+  FULL JOIN Customers
     ON Orders.CustomerID = Customers.CustomerID
  ORDER BY Freight;
 ```
@@ -61,7 +71,8 @@ SELECT Employees.FirstName, Employees.LastName, Orders.Freight
 Вариант с `JOIN`:
 ```sql
 SELECT Employees.FirstName, Employees.LastName, Orders.Freight
-  FROM Employees CROSS JOIN Orders;
+  FROM Employees
+ CROSS JOIN Orders;
 ```
 
 Результаты выдачи будут эквивалентны.
