@@ -1,4 +1,4 @@
-# Практика
+# Практика, ч. 1
 
 ##### Задание 1
 
@@ -6,6 +6,7 @@
 
 *Текст задания: организовать эквисоединение, которое выводит цену и названия тех товаров, для которых цена за единицу (UnitPrice) в таблице Order Details меньше 20.*
 
+Код решения:
 ```sql
 SELECT Products.ProductName, [Order Details].UnitPrice
   FROM Products JOIN [Order Details]
@@ -72,5 +73,43 @@ SELECT Products.ProductName, [Order Details].UnitPrice
 Результаты двух запросов идентичны:
 
 <img src="les10_task4.png" width=400 />
+
+# Практика, ч. 2
+
+##### Задание 1
+
+*Отобрать с помощью `LEFT JOIN` все записи из таблицы Customers, для которых FK-ключ таблицы Orders пустой.*
+
+Код решения:
+```sql
+SELECT Customers.*
+  FROM Customers LEFT JOIN Orders
+    ON Customers.CustomerID = Orders.CustomerID
+ WHERE Orders.OrderID IS NULL;
+```
+
+---
+
+##### Задание 2
+
+*Вывести конкретную информацию по всем пользователям Customers и поставщикам Suppliers -- имя контактной персоны, город и страну, а также идентификацию группы (пользователь или поставщик).*
+
+Необходимые поля:
+- имя контактной персоны -- [ContactName]
+- город -- [City]
+- страна -- [Country]
+- дополнительно указать идентификацию группы:
+    - `'Customer' AS Type`
+    - `'Supplier' AS Type`
+
+Код решения:
+```sql
+SELECT 'Customer' AS Type, ContactName, City, Country
+  FROM Customers
+ UNION ALL
+SELECT 'Supplier' AS Type, ContactName, City, Country
+  FROM Suppliers
+ ORDER BY Type, ContactName;
+```
 
 ---
