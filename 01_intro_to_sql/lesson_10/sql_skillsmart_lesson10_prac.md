@@ -8,10 +8,9 @@
 
 ```sql
 SELECT Products.ProductName, [Order Details].UnitPrice
-  FROM Products
-  JOIN [Order Details]
+  FROM Products JOIN [Order Details]
     ON Products.ProductID = [Order Details].ProductID
- WHERE [Order Details].UnitPrice < 20
+   AND [Order Details].UnitPrice < 20
  ORDER BY [Order Details].UnitPrice;
 ```
 
@@ -30,7 +29,7 @@ SELECT Orders.Freight, Customers.CompanyName
 
 *Требуется проверить этот запрос с вариантом `FULL JOIN` -- за счёт чего выдача получилась объёмнее?*
 
-**Ответ**: за счет полей с названиями компаний, от которых не поступал заказ.
+**Ответ**: за счет записей с названиями компаний, от которых не поступал заказ. Это записи, которые не подошли под условие отбора, поэтому поля, соответствующие другой таблице, заполняются значением NULL.
 
 Таких компаний две:
 
@@ -43,6 +42,11 @@ SELECT Orders.Freight, Customers.CompanyName
 *Как с помощью предложения `WHERE` превратить запрос `CROSS JOIN` в `INNER JOIN`?*
 
 Т.к. операция `INNER JOIN` возвращает пересечение множеств, а `CROSS JOIN` - набор всевозможных комбинаций элементов из этих множеств, с помощью `WHERE` нужно задать условие, по которому будут выбраны только нужные записи. На ум сразу приходят эквисоединения, рассмотренные в ![занятии 8](../lesson_8/sql_lesson8_notes.md).
+
+Т.е. нужно добавить фильтрацию:
+```sql
+WHERE table1.primary_key = table2.foreign_key
+```
 
 ---
 
