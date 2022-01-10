@@ -9,9 +9,10 @@
 Код решения:
 ```sql
 SELECT Products.ProductName, [Order Details].UnitPrice
-  FROM Products JOIN [Order Details]
-    ON Products.ProductID = [Order Details].ProductID
-   AND [Order Details].UnitPrice < 20
+  FROM Products
+       JOIN [Order Details]
+       ON Products.ProductID = [Order Details].ProductID
+          AND [Order Details].UnitPrice < 20
  ORDER BY [Order Details].UnitPrice;
 ```
 
@@ -23,8 +24,8 @@ SELECT Products.ProductName, [Order Details].UnitPrice
 ```SQL
 SELECT Orders.Freight, Customers.CompanyName
   FROM Orders
- INNER JOIN Customers
-    ON Orders.CustomerID = Customers.CustomerID
+       INNER JOIN Customers
+       ON Orders.CustomerID = Customers.CustomerID
  ORDER BY Freight;
 ```
 
@@ -58,7 +59,7 @@ WHERE table1.primary_key = table2.foreign_key
 ```sql
 SELECT Products.ProductName, [Order Details].UnitPrice
   FROM Products
- CROSS JOIN [Order Details]
+       CROSS JOIN [Order Details]
  WHERE Products.ProductID = [Order Details].ProductID
 ```
 
@@ -66,8 +67,8 @@ SELECT Products.ProductName, [Order Details].UnitPrice
 ```sql
 SELECT Products.ProductName, [Order Details].UnitPrice
   FROM Products
-  JOIN [Order Details]
-    ON Products.ProductID = [Order Details].ProductID;
+       JOIN [Order Details]
+       ON Products.ProductID = [Order Details].ProductID;
 ```
 
 Результаты двух запросов идентичны:
@@ -83,8 +84,9 @@ SELECT Products.ProductName, [Order Details].UnitPrice
 Код решения:
 ```sql
 SELECT Customers.*
-  FROM Customers LEFT JOIN Orders
-    ON Customers.CustomerID = Orders.CustomerID
+  FROM Customers
+       LEFT JOIN Orders
+       ON Customers.CustomerID = Orders.CustomerID
  WHERE Orders.OrderID IS NULL;
 ```
 
@@ -106,7 +108,9 @@ SELECT Customers.*
 ```sql
 SELECT 'Customer' AS Type, ContactName, City, Country
   FROM Customers
- UNION ALL
+
+ UNION
+
 SELECT 'Supplier' AS Type, ContactName, City, Country
   FROM Suppliers
  ORDER BY Type, ContactName;

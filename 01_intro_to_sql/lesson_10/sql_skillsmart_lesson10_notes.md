@@ -10,11 +10,18 @@ FROM Table1 JOIN Table2 ON условие
 ```
 
 Оператор `JOIN` может уточняться дополнительными модификаторами-префиксами.     
-Например, это может быть `AS`:
+
+Пример структуры запроса:
 ```sql
-FROM Table1 
-JOIN Table2 AS t2
-  ON условие
+SELECT *
+  FROM table AS t0
+       JOIN table1 AS t1
+       ON условие_1
+          AND условие_2;
+
+       JOIN table2 AS t2
+       ON условие_3
+          AND условие_4;
 ```
 
 ## Операция INNER JOIN
@@ -27,16 +34,16 @@ JOIN Table2 AS t2
 ```sql
 SELECT Products.ProductName, Categories.CategoryName
   FROM Products
- INNER JOIN Categories
-    ON Products.CategoryID = Categories.CategoryID;
+       INNER JOIN Categories
+       ON Products.CategoryID = Categories.CategoryID;
 ```
 
 `INNER JOIN` -- это `JOIN` в SQL по умолчанию, его можно записывать просто как `JOIN` (без `INNER`).
 ```sql
 SELECT Products.ProductName, Categories.CategoryName
   FROM Products
-  JOIN Categories
-    ON Products.CategoryID = Categories.CategoryID;
+       JOIN Categories
+       ON Products.CategoryID = Categories.CategoryID;
 ```
 
 ## Операция FULL JOIN
@@ -47,8 +54,8 @@ SELECT Products.ProductName, Categories.CategoryName
 ```sql
 SELECT Orders.Freight, Customers.CompanyName
   FROM Orders
-  FULL JOIN Customers
-    ON Orders.CustomerID = Customers.CustomerID
+       FULL JOIN Customers
+       ON Orders.CustomerID = Customers.CustomerID
  ORDER BY Freight;
 ```
 
@@ -73,7 +80,7 @@ SELECT Employees.FirstName, Employees.LastName, Orders.Freight
 ```sql
 SELECT Employees.FirstName, Employees.LastName, Orders.Freight
   FROM Employees
- CROSS JOIN Orders;
+       CROSS JOIN Orders;
 ```
 
 Результаты выдачи будут эквивалентны.
@@ -88,9 +95,9 @@ SELECT Employees.FirstName, Employees.LastName, Orders.Freight
 ```sql
 SELECT Customers.CompanyName, Orders.OrderID
   FROM Customers 
-  LEFT JOIN Orders
-    ON Customers.CustomerID = Orders.CustomerID 
-ORDER BY Customers.CompanyName; 
+       LEFT JOIN Orders
+       ON Customers.CustomerID = Orders.CustomerID 
+ ORDER BY Customers.CompanyName; 
 ```
 
 Мы получим все записи из таблицы пользователей Customers, даже если им не найдено сопоставлений из таблицы заказов Orders.
@@ -101,8 +108,8 @@ ORDER BY Customers.CompanyName;
 ```sql
 SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
   FROM Orders 
- RIGHT JOIN Employees 
-    ON Orders.EmployeeID = Employees.EmployeeID 
+       RIGHT JOIN Employees 
+       ON Orders.EmployeeID = Employees.EmployeeID 
  ORDER BY Orders.OrderID; 
 ```
 
@@ -128,7 +135,9 @@ SELECT A.CompanyName AS CustomerName1,
 Например, мы хотим отобрать все города из двух таблиц -- пользователей Customers и поставщиков Suppliers:
 ```sql
 SELECT City FROM Customers 
+
  UNION ALL 
+
 SELECT City FROM Suppliers 
  ORDER BY City; 
 ```
@@ -138,7 +147,9 @@ SELECT City FROM Suppliers
 SELECT City, Country 
   FROM Customers 
  WHERE Country='USA' 
+
  UNION 
+
 SELECT City, Country 
   FROM Suppliers 
  WHERE Country='USA' 
@@ -149,7 +160,9 @@ SELECT City, Country
 ```sql
 SELECT 'Customer' As Type, City, Country FROM Customers 
  WHERE Country='USA' 
+
  UNION 
+
 SELECT 'Supplier' As Type, City, Country FROM Suppliers 
  WHERE Country='USA' 
  ORDER BY City;
