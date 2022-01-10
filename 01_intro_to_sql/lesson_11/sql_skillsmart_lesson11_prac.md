@@ -51,7 +51,7 @@ VALUES (10,
 
 Исходная таблица EmployeeTerritories:
 
-<img src="les11_task2_1.png" />
+<img src="les11_task2_1.png" height=200/>
 
 Код запроса:
 ```sql
@@ -63,7 +63,7 @@ VALUES (12, 95054),
 
 Таблица EmployeeTerritories после выполнения запроса:
 
-<img src="les11_task2_2.png" />
+<img src="les11_task2_2.png" height=180/>
 
 ---
 
@@ -81,7 +81,7 @@ VALUES (12, 95054),
 
 Определить ключевые поля поможет раздел Columns, а названия таблиц, хранящих корректные значениями ключей - раздел Keys:
 
-<img src="les11_task3_2.png" />
+<img src="les11_task3_2.png" height=400/>
 
 Код запроса:
 ```sql

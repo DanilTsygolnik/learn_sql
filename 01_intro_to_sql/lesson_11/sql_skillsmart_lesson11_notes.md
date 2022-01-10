@@ -44,11 +44,13 @@ column does not allow nulls.
 ```
 
 Откроем свойства поля CustomerID:
-<img src="INSERT_col_properties.png" />
 
-Видно, что в данное поле допустима запись строк длиной не более 5 символов, а NULL - запрещено.
 
-<img src="INSERT_col_properties_fields.png" />
+<img src="INSERT_col_properties.png" height=500 />
+
+Видно (выделено оранжевым), что в данное поле допустима запись строк длиной не более 5 символов, а NULL - запрещено.
+
+<img src="INSERT_col_properties_fields.png" height=600 />
 
 Так как в запросе мы явно не указали поле CustomerID, сервер пытается записать в него значение NULL, что и приводит к ошибке.
 
