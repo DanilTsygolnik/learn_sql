@@ -11,8 +11,7 @@
 Код запроса:
 ```sql
 INSERT INTO Employees
-       ([EmployeeID],
-        [LastName],
+       ([LastName],
         [FirstName],
         [Title],
         [TitleOfCourtesy],
@@ -24,8 +23,7 @@ INSERT INTO Employees
         [PostalCode],
         [Country],
         [ReportsTo])
-VALUES (10,
-        'Barton',
+VALUES ('Barton',
         'Issy',
         'Sales Representative',
         'Ms.',
@@ -58,7 +56,7 @@ VALUES (10,
 INSERT INTO EmployeeTerritories (EmployeeID, TerritoryID)
 VALUES (12, 95054),
        (12, 85014),
-	   (12, 94105);
+       (12, 94105);
 ```
 
 Таблица EmployeeTerritories после выполнения запроса:
@@ -91,8 +89,8 @@ VALUES ('WARTH', 12, 3);
 
 Поле OrderID не указано, т.к. значение данного идентификатора (PK) создается автоматически.
 
-Конфликтов не возникло, в таблицу Orders добавлена новая запись:
+В таблицу Orders добавлена новая запись:
 
 <img src="les11_task3_3.png" />
 
----
+Хотя конфликтов не возникло, здесь рассмотрен пример опасности прямой модификации таблицы без учёта логической целостности. Мы добавили заказ, в котором не заданы важные поля (например, дата заказа). Товары в этом заказе отсутствуют, так как не сформирована связь в таблице Order Details, и подобные некорректности могут привести к существенному искажению логической структуры.
