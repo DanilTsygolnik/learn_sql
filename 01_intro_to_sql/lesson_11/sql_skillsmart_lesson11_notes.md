@@ -91,7 +91,7 @@ constraint "FK_Territories_Region".
 
 Команда `UPDATE` модифицирует отдельные поля по всей таблице. Она записывается следующим образом:
 ```SQL
-UPDATE имя-таблицы
+UPDATE table_name
    SET поле = значение;
 ```
 
@@ -119,14 +119,14 @@ UPDATE Employees
 
 Команда `DELETE` удаляет записи из таблицы. Она имеет две формы. При использовании первой формы:
 ```SQL
-DELETE FROM имя-таблицы;
+DELETE FROM table_name;
 ```
 
 из заданной таблицы исключатся все записи.
 
 При использовании второй формы:
 ```SQL
-DELETE FROM имя-таблицы
+DELETE FROM table_name
  WHERE условие;
 ```
 
@@ -142,5 +142,5 @@ DELETE FROM Contacts
 
 # Практика
 
-Упражнения по `INSERT` -- [Практика, ч. 1](sql_skillsmart_lesson11_prac.md#практика-ч-1).
+Упражнения по `INSERT` -- [Практика, ч. 1](sql_skillsmart_lesson11_prac.md#практика-ч-1).         
 Упражнения по `UPDATE ... SET` и `DELETE` -- [Практика, ч. 2](sql_skillsmart_lesson11_prac.md#практика-ч-2).
