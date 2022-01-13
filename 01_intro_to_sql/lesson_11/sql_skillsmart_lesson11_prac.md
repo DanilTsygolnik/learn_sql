@@ -101,13 +101,21 @@ VALUES ('WARTH', 12, 3);
 
 *Написать запрос, чтобы увеличить скидку (Discount) в таблице Order Details до 20% (0.20) для тех единиц товара, которых на складе хранится больше 50 (поле Quantity). Запрос не выполнять, чтобы не вносить изменения в таблицу.*
 
-Код запроса:
+Код запроса, вариант 1:
 ```sql
 UPDATE [Order Details]
    SET Discount = 0.20
  WHERE Quantity > 50;
 ```
 
+Код запроса, вариант 2:
+```sql
+UPDATE [OrderDetails]
+   SET Discount = 0.20
+ WHERE ProductID IN
+       (SELECT ProductID IN Products
+         WHERE UnitsInStock > 50);
+```
 ##### Задание 2
 
 *Написать запрос, чтобы в таблице Contacts изменить все контактные данные, ранее приходившиеся на Berlin (поле City) и Germany (поле Country), соответственно на Piter и Russia. Запрос не выполнять, чтобы не вносить изменения в таблицу.*
@@ -115,8 +123,8 @@ UPDATE [Order Details]
 Код запроса:
 ```sql
 UPDATE Contacts
-   SET City = 'Piter', Country = 'Russia'
- WHERE City = 'Berlin';
+   SET City = "Piter", Country = "Russia"
+ WHERE City = "Berlin" OR Country = "Germany";
 ```
 
 ##### Задание 3
@@ -141,6 +149,6 @@ VALUES ('Pony Express', '8 (495) 937-77-77'),
 PK в поле ShipperID автоматически увеличивается на 1 при добавлении каждой новой записи. В исходной таблице было всего 3 записи. Вновь добавленные позиции будет удобно удалить, используя проверку значения PK:
 
 ```sql
-DELETE Shippers
+DELETE FROM Shippers
  WHERE ShipperID > 3;
 ```
