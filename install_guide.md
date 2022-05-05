@@ -1,9 +1,5 @@
 ## Инициализация кластера в пользовательской директории
 
-TODO:
-1. Откатиться к моменту перед установкой postgresql и наверняка убедиться, что файл `/usr/lib/systemd/system/postgresql.service` изначально нет в системе, что он создается в процессе установки.
-2. Сохранить содержимое файла `/usr/lib/systemd/system/postgresql.service`
-
 Порядок иницилизации:
 1. Установить `sudo pacman -Syu postgresql`
 2. Получаем информацию о пользовательской директории, внутри которой планируем создать рездел под кластер. В моем случае, в системе единственный юзер _username_. Обращаем внимание, что доступ есть только у owner'a директории:
@@ -19,8 +15,7 @@ drwxr-x--- 25 username username 4096 May  5 10:30 username
 ```
 4. Добавляем пользователя _postgres_ в группу _username_. Убеждаемся, что все сработало:
 ```
-$ usermod -aG username postgres
-$ groups postgres
+$ sudo usermod -aG username postgres && groups postgres
 username postgres
 ```
 [Почему без шагов 3-4 невозможно выполнить дальнейшие шаги](install_guide_nuances.md#важность-шагов-3-4). 
@@ -41,7 +36,7 @@ sudo touch /etc/systemd/system/postgresql.service.d/PGROOT.conf
 ```
 [Service]
 Environment=PGROOT=/home/username/path/to/pgsql
-PIDFile=/home/username/path/to/pgsql/datapostmaster.pid
+PIDFile=/home/username/path/to/pgsql/data/postmaster.pid
 ProtectHome=false
 ```
 Сохраняем файл и переходим к следующему шагу.
