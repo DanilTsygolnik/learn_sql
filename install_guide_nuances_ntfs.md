@@ -11,7 +11,9 @@ initdb: removing data directory "/home/dts/Documents/current_work/programming/pg
 
 Команды Linux не работают с Windows filesystems[^why-chmod-doesnt-work]
 
-Пытался что-то решить с fstab, но на ntfs так и не удалось поменять пользователя на _postgres_. Создал рабочую директорию под ext4, но диск также внешний, с mount-точкой в пользовательской директории `/home/dts/work`. Это решило проблему, получил стандартный вывод:
+Пытался что-то решить с fstab[^sugg-sol-stovflv], но на ntfs так и не удалось поменять пользователя на _postgres_. Создал рабочую директорию под ext4, но диск также внешний, с mount-точкой в пользовательской директории `/home/dts/work`. Это решило проблему, получил стандартный вывод:
 
 
 [^why-chmod-doesnt-work]: https://stackoverflow.com/a/15308595
+[^sugg-sol-stovflv]: ответ https://unix.stackexchange.com/a/492208
+    рабочая ссылка в комментарии https://web.archive.org/web/20160610015636/https://www.tuxera.com/community/ntfs-3g-advanced/ownership-and-permissions/
