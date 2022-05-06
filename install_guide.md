@@ -58,5 +58,20 @@ systemctl status postgresql
 sudo systemctl stop postgresql
 ```
 
+## После инициализации
+
+Системный пользователь _postgres_, из под учетной записи которого производится первичная настройка СУБД, создается автоматически при установке пакета postgresql. По умолчанию, home-директорией назначается `/var/lib/postgres`. При инициализации кластера в другом месте (как сейчас) этот момент тоже нужно поправить[^psql-write-history-error-resolve].
+
+Если сервер работает, его нужно остановить. Далее переназначаем home-директорию и проверяем результат:
+```
+$ sudo usermod --home /home/username/path/to/pgsql postgres
+$ sudo -iu postgres
+[postgres]$ pwd
+/home/username/path/to/pgsql
+[postgres]$ exit
+```
+После этого, например, сообщений об ошибках с записью истории команд в `psql`, выполненных из под учетной записи _postgres_ не будет - home-директория настроена, к ней есть доступ, и файл `.psql_history` успешно обновляется. Здесь же, традиционно, хранится `.bash_history` пользователя _postgres_.
+
 
 [^drop-in-examples]: https://wiki.archlinux.org/title/Systemd#Drop-in_files
+[^psql-write-history-error-resolve]: https://dba.stackexchange.com/a/83822
