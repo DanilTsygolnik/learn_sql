@@ -4,7 +4,16 @@
 sudo pacman -Syu postgresql
 ```
 
+В процессе установки создается системный пользователь _postgres_.
+
 ## Инициализация кластера в пользовательской директории
+
+В документации PostgreSQL говорится, что кластер инициализировать можно в любой нужно директории. Для этого лишь требуется обеспечить доступ пользователя _postgres_ (который далее вызывает `initdb`) к соответствующему каталогу. Однако, есть оговорка:
+
+> If you are using a pre-packaged version of PostgreSQL, it may well have a specific convention for where to place the data directory, and it may also provide a script for creating the data directory. In that case you should use that script in preference to running initdb directly. Consult the package-level documentation for details.[^postgres-init-cluster-off]
+
+Это как раз наш случай - установили из пакетов на предыдущем шаге. Однако в офф. гайда Manjaro явно не написано "устанавливать строго в `/var/lib/postgres`, иначе не заработает" - это я уже проверил метом проб, и дальнейший текст пошагово описывает способ данное ограничение обойти. В ходе разбирательств наткнулся также на возможные альтернативы: вариант 1, вариант 2 (не проверял).
+
 
 1. Получаем информацию о пользовательской директории, внутри которой планируем создать рездел под кластер. В моем случае, в системе единственный юзер _username_. Обращаем внимание, что доступ есть только у owner'a директории:
 ```
@@ -81,3 +90,4 @@ $ sudo -iu postgres
 
 [^drop-in-examples]: https://wiki.archlinux.org/title/Systemd#Drop-in_files
 [^psql-write-history-error-resolve]: https://dba.stackexchange.com/a/83822
+[^postgres-init-cluster-off]:[ссылка на мануал](https://www.postgresql.org/docs/14/creating-cluster.html) 
