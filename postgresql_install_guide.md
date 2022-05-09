@@ -14,6 +14,7 @@ sudo pacman -Syu postgresql
 
 Это как раз наш случай - установили из пакетов на предыдущем шаге. Однако в офф. гайда Manjaro явно не написано "устанавливать строго в `/var/lib/postgres`, иначе не заработает" - это я уже проверил метом проб, и дальнейший текст пошагово описывает способ данное ограничение обойти. В ходе разбирательств наткнулся также на возможные альтернативы: вариант 1[^custom-dir-alternative1], вариант 2[^custom-dir-alternative2] (не проверял).
 
+### Инициализация пошагово
 
 1. Получаем информацию о пользовательской директории, внутри которой планируем создать рездел под кластер. В моем случае, в системе единственный юзер _username_. Обращаем внимание, что доступ есть только у owner'a директории:
 ```
@@ -91,5 +92,5 @@ $ sudo -iu postgres
 [^drop-in-examples]: https://wiki.archlinux.org/title/Systemd#Drop-in_files
 [^psql-write-history-error-resolve]: https://dba.stackexchange.com/a/83822
 [^postgres-init-cluster-off]:[ссылка на мануал](https://www.postgresql.org/docs/14/creating-cluster.html) 
-[^custom-dir-alternative1]: без доступа к `/var/lib/postgres` (т.е. из под юзера), без танцев с бубнами вокруг прав доступа --[ссылка](https://cims.nyu.edu/webapps/content/systems/userservices/databases/PostgreSQL-cluster) 
-[^custom-dir-alternative2]: перенести кластер postgresql из `/var/lib/postgres` в пользовательскую директорию --[ссылка](https://www.digitalocean.com/community/tutorials/how-to-move-a-postgresql-data-directory-to-a-new-location-on-ubuntu-18-04) 
+[^custom-dir-alternative1]: без доступа к `/var/lib/postgres` (т.е. из под юзера), без танцев с бубнами вокруг прав доступа -- [ссылка](https://cims.nyu.edu/webapps/content/systems/userservices/databases/PostgreSQL-cluster) 
+[^custom-dir-alternative2]: перенести кластер postgresql из `/var/lib/postgres` в пользовательскую директорию -- [ссылка](https://www.digitalocean.com/community/tutorials/how-to-move-a-postgresql-data-directory-to-a-new-location-on-ubuntu-18-04) 
