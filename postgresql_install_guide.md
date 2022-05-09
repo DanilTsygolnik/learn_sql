@@ -22,7 +22,8 @@ drwxr-x--- 25 username username 4096 May  5 10:30 username
 $ sudo usermod -aG username postgres && groups postgres
 username postgres
 ```
-[Почему без шагов 3-4 невозможно выполнить дальнейшие шаги](install_guide_nuances.md#важность-шагов-3-4). 
+[Почему без шагов 2-3 невозможно выполнить дальнейшие шаги](postgresql_install_guide_nuances.md#важность-шагов-2-3).
+
 4. Создаем корневую директорию для кластера в нужном месте и обязательно назначаем _postgres_ ее владельцем:
 ```
 mkdir -p /home/username/path/to/pgsql && sudo chown postgres:postgres /home/username/path/to/pgsql
