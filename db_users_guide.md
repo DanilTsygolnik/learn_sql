@@ -1,14 +1,18 @@
-### Работа с ролями
+## Работа с ролями
 
-Как добавить роль[^create-user-how-to-adv]:
-```
-sudo -u postgres createuser --interactive
-```
-Простейший вариант:
+Пользователям PostgreSQL, работающим с БД, назначаются т.н. роли[^posgtgres-db-roles]. Это набор параметров, включающих id пользователя, а также операции, которые он может производить внутри СУБД, с БД в частности.
+
+На практике удобно создавать роли с теми же именами, что и у пользователя системы (username - username), хотя концептуально данные идентификаторы никак не связаны.
+
+
+Простейший вариант[^createuser]:
 ```
 # простейший вариант
 sudo -u postgres createuser -d username
 ```
+Данная cli-команда упрощает работу с командой СУБД `CREATE ROLE`[^sql-createrole].
+
+## Базовая работа с БД через cli
 
 Работать с БД происходит следующим образом:
 ```
@@ -202,5 +206,7 @@ Large Objects
 ```
 
 
-[^create-user-how-to-adv]: https://stackoverflow.com/a/62922162
+[^createuser]: https://www.postgresql.org/docs/14/app-createuser.html
 [^digocn-roles]: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04
+[^posgtgres-db-roles]: https://www.postgresql.org/docs/14/database-roles.html
+[^sql-createrole]: https://www.postgresql.org/docs/14/sql-createrole.html
