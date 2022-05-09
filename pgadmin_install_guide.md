@@ -31,9 +31,9 @@ SERVER_MODE = True
 
 Перед запуском `pgadmin4` я не стал создавать для _postgres_ пароль (раздел Prerequisites, step 4). Так что при создании первого сервера я не стал задавать пароль _postgres_, как в гайде, сразу перешел к созданию сервера. Дальше следовал по шагам, но т.к. не задавал никаких паролей, то и не вводил в это поле ничего, и все работает. Даже если создать новый сервер (ПКМ Servers > Register > Server) и указать пароль, то в дальнейшем подключиться получится и без него - во всплывающей форме оставляем пустое поле и жмем "ОК".
 
-<img srs="/img/create_another_server.png">
+<img src="img/create_another_server.png" height=120>
 
-<img src="/img/pgadmin_connect_after_logout.png">
+<img src="img/pgadmin_connect_after_logout.png" height=120>
 
 
 [^install-pip-manual]: https://www.pgadmin.org/download/pgadmin-4-python/
