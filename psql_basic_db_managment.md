@@ -56,4 +56,4 @@ psql hexlet < users.sql
 ```
 Команды выше можно объединить в одну: `make load-all`. Её нужно запустить (для данного [make-файла](hexlet_db/Makefile)), находясь в директории с sql-файлами.
 
-
+С помощью аналогичного [make-файла](northwind_db/Makefile) создал БД [northwind](https://github.com/pthom/northwind_psql) для практики.
